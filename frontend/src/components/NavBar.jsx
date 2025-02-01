@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./styles/Navbar.css";
+import "./Navbar.css";
 
 const Navbar = () => {
   const [user, setUser] = useState(localStorage.getItem("token"));
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Function to update user state when localStorage changes
+    // Update state on localStorage change
     const updateUser = () => {
       setUser(localStorage.getItem("token"));
     };
 
-    // Listen for login/logout updates
+    // Listen for login/logout updates (for multi-tab)
     window.addEventListener("storage", updateUser);
 
     return () => {
       window.removeEventListener("storage", updateUser);
     };
   }, []);
+
+  useEffect(() => {
+    // Also update user state when component renders
+    setUser(localStorage.getItem("token"));
+  }, [localStorage.getItem("token")]); // React will track token updates
 
   const handleLogout = () => {
     localStorage.removeItem("token");

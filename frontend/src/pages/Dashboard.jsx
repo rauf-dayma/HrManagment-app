@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import CalendarComponent from "../components/Calendar";
 import SlotForm from "../components/SlotForm";
-import "./styles/Dashboard.css";
+import "./Dashboard.css";
 
-const API_BASE_URL = "http://localhost:5000/api/slots";
+const API_BASE_URL = "https://hrmanagment-app-2.onrender.com";
 
 const Dashboard = () => {
   const [slots, setSlots] = useState([]);

@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/Calendar.css";
+import "./Calendar.css";
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "short", day: "numeric" };

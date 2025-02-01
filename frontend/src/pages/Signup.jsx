@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import React, { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import "./styles/Login.css"; // Assuming the same CSS is used
+import "./Login.css"; // Assuming the same CSS is used
 
 function Signup() {
   const [signupInfo, setSignupInfo] = useState({
@@ -24,7 +24,7 @@ function Signup() {
 
     console.log("Registering user:", name, email, password);
     try {
-      const url = "http://localhost:5000/api/auth/register"; // Adjust API endpoint
+      const url = `https://hrmanagment-app-2.onrender.com/auth/register`; // Adjust API endpoint
       const response = await fetch(url, {
         method: "POST",
         headers: {

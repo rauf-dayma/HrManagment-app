@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./styles/SlotForm.css";
+import "./SlotForm.css";
 
 const SlotForm = ({ onSubmit, initialData }) => {
   // State management for form fields

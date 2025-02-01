@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import React, { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import "./styles/Login.css";
+import "./Login.css";
 
 function Login() {
   const [loginInfo, setLoginInfo] = useState({
@@ -24,7 +24,7 @@ function Login() {
     console.log("Attempting to login with:", email, password);
   
     try {
-      const url = "http://localhost:5000/api/auth/login";
+      const url = "https://hrmanagment-app-2.onrender.com/api/auth/login";
       const response = await fetch(url, {
         method: "POST",
         headers: {
