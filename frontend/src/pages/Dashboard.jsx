@@ -100,7 +100,6 @@ const Dashboard = () => {
     if (!token) return;
     try {
       setLoading(true); // Set loading to true when request starts
-
       const response = await fetch(`https://hrmanagment-app-2.onrender.com/api/slots/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },

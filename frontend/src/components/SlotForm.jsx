@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./SlotForm.css";
-
+  
 const SlotForm = ({ onSubmit, initialData }) => {
   // State management for form fields
   const [startTime, setStartTime] = useState(initialData?.startTime || "");
@@ -20,9 +20,6 @@ const SlotForm = ({ onSubmit, initialData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = { startTime, endTime, candidateName };
-    setStartTime(initialData.startTime);
-    setEndTime(initialData.endTime);
-    setCandidateName(initialData.candidateName);
     onSubmit(formData);  // Will trigger either create or update in parent
   };
 
