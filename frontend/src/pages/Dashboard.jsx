@@ -23,9 +23,11 @@ const Dashboard = () => {
 
     const fetchSlots = async () => {
       try {
+        setLoading(true); // Set loading to true when request starts
         const response = await fetch("https://hrmanagment-app-2.onrender.com/api/slots/", {
           headers: { Authorization: `Bearer ${token}` },
         });
+        setLoading(false); // Set loading to true when request starts
         if (!response.ok) throw new Error("Failed to fetch slots");
         const data = await response.json();
         setSlots(data);
@@ -43,6 +45,7 @@ const Dashboard = () => {
   const handleCreate = async (slotData) => {
     if (!token) return;
     try {
+      setLoading(true); // Set loading to true when request starts
       const response = await fetch("https://hrmanagment-app-2.onrender.com/api/slots/", {
         method: "POST",
         headers: {
@@ -51,6 +54,7 @@ const Dashboard = () => {
         },
         body: JSON.stringify(slotData),
       });
+      setLoading(false); // Set loading to true when request starts
       if (!response.ok) throw new Error("Failed to create slot");
 
       const newSlot = await response.json();
@@ -65,6 +69,7 @@ const Dashboard = () => {
     if (!token) return;
 
     try {
+      setLoading(true); // Set loading to true when request starts
       const response = await fetch(`https://hrmanagment-app-2.onrender.com/api/slots/${id}`, {  // Make sure `id` is passed in the URL, not the whole `slot` object.
         method: "PUT",
         headers: {
@@ -73,7 +78,7 @@ const Dashboard = () => {
         },
         body: JSON.stringify(updatedData), // Use the updated slot information
       });
-
+      setLoading(false); // Set loading to true when request starts
       if (!response.ok) throw new Error("Failed to update slot");
 
       const updatedSlot = await response.json();
@@ -94,12 +99,14 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (!token) return;
     try {
+      setLoading(true); // Set loading to true when request starts
+
       const response = await fetch(`https://hrmanagment-app-2.onrender.com/api/slots/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
+      setLoading(false); // Set loading to false after request completes
       if (!response.ok) throw new Error("Failed to delete slot");
-
       setSlots((prevSlots) => prevSlots.filter((slot) => slot._id !== id));
     } catch (error) {
       console.error("Error:", error);
