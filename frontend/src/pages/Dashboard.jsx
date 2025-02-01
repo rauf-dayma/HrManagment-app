@@ -4,7 +4,7 @@ import CalendarComponent from "../components/Calendar";
 import SlotForm from "../components/SlotForm";
 import "./DashBoard.css";
 
-const API_BASE_URL = "https://hrmanagment-app-2.onrender.com";
+// const API_BASE_URL = "https://hrmanagment-app-2.onrender.com";
 
 const Dashboard = () => {
   const [slots, setSlots] = useState([]);
@@ -23,7 +23,7 @@ const Dashboard = () => {
 
     const fetchSlots = async () => {
       try {
-        const response = await fetch(API_BASE_URL, {
+        const response = await fetch("https://hrmanagment-app-2.onrender.com", {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!response.ok) throw new Error("Failed to fetch slots");
@@ -43,7 +43,7 @@ const Dashboard = () => {
   const handleCreate = async (slotData) => {
     if (!token) return;
     try {
-      const response = await fetch(API_BASE_URL, {
+      const response = await fetch("https://hrmanagment-app-2.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@ const Dashboard = () => {
     if (!token) return;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/${id}`, {  // Make sure `id` is passed in the URL, not the whole `slot` object.
+      const response = await fetch(`https://hrmanagment-app-2.onrender.com/${id}`, {  // Make sure `id` is passed in the URL, not the whole `slot` object.
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (!token) return;
     try {
-      const response = await fetch(`${API_BASE_URL}/${id}`, {
+      const response = await fetch(`https://hrmanagment-app-2.onrender.com/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
