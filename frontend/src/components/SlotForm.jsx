@@ -20,6 +20,9 @@ const SlotForm = ({ onSubmit, initialData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = { startTime, endTime, candidateName };
+    setStartTime(initialData.startTime);
+    setEndTime(initialData.endTime);
+    setCandidateName(initialData.candidateName);
     onSubmit(formData);  // Will trigger either create or update in parent
   };
 
