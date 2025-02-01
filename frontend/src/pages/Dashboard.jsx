@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import CalendarComponent from "../components/Calendar";
 import SlotForm from "../components/SlotForm";
-import "./Dashboard.css";
+import "./DashBoard.css";
 
 const API_BASE_URL = "https://hrmanagment-app-2.onrender.com";
 
