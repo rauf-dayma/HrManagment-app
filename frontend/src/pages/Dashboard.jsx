@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import CalendarComponent from "../components/Calendar";
+import { ToastContainer } from "react-toastify";
 import SlotForm from "../components/SlotForm";
 import "./DashBoard.css";
 
@@ -28,7 +29,12 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         setLoading(false); // Set loading to true when request starts
-        if (!response.ok) throw new Error("Failed to fetch slots");
+        if (!response.ok){
+          toast.error(errorResult.message || "Failed to fetch slots.", {
+            position: "top-right",
+          });
+        }   
+      
         const data = await response.json();
         setSlots(data);
       } catch (error) {
@@ -55,7 +61,11 @@ const Dashboard = () => {
         body: JSON.stringify(slotData),
       });
       setLoading(false); // Set loading to true when request starts
-      if (!response.ok) throw new Error("Failed to create slot");
+      if (!response.ok){
+        toast.error(errorResult.message || "Failed to create slots.", {
+          position: "top-right",
+        });
+      }
 
       const newSlot = await response.json();
       setSlots((prevSlots) => [...prevSlots, newSlot]);
@@ -79,7 +89,11 @@ const Dashboard = () => {
         body: JSON.stringify(updatedData), // Use the updated slot information
       });
       setLoading(false); // Set loading to true when request starts
-      if (!response.ok) throw new Error("Failed to update slot");
+      if (!response.ok){
+        toast.error(errorResult.message || "Failed to update slots.", {
+          position: "top-right",
+        });
+      }
 
       const updatedSlot = await response.json();
 
@@ -105,7 +119,11 @@ const Dashboard = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       setLoading(false); // Set loading to false after request completes
-      if (!response.ok) throw new Error("Failed to delete slot");
+      if (!response.ok) {
+        toast.error(errorResult.message || "Failed to delete slots.", {
+          position: "top-right",
+        });
+      }
       setSlots((prevSlots) => prevSlots.filter((slot) => slot._id !== id));
     } catch (error) {
       console.error("Error:", error);
