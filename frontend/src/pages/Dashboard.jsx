@@ -23,7 +23,7 @@ const Dashboard = () => {
 
     const fetchSlots = async () => {
       try {
-        const response = await fetch("https://hrmanagment-app-2.onrender.comapi/slots/", {
+        const response = await fetch("https://hrmanagment-app-2.onrender.com/api/slots/", {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!response.ok) throw new Error("Failed to fetch slots");
@@ -43,7 +43,7 @@ const Dashboard = () => {
   const handleCreate = async (slotData) => {
     if (!token) return;
     try {
-      const response = await fetch("https://hrmanagment-app-2.onrender.comapi/slots/", {
+      const response = await fetch("https://hrmanagment-app-2.onrender.com/api/slots/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
