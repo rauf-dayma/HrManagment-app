@@ -1,8 +1,7 @@
-// vite.config.js
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+// https://vite.dev/config/
 export default defineConfig({
-  build: {
-    outDir: 'dist', // Ensure this is 'dist' or another directory where you want the output
-  },
-});
+  plugins: [react()],
+})
