@@ -1,4 +1,4 @@
-import Slot from '../models/Slot.js';
+import Slot from '../models/slot.js';
 
 export const createSlot = async (req, res) => {
     try {
