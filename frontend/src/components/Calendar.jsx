@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/CalendarComponent.css";
+import "./styles/Calendar.css";
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "short", day: "numeric" };
@@ -15,7 +15,7 @@ const formatTime = (timeString) => {
   });
 };
 
-const CalendarComponent = ({ slots, onDeleteSlot, onUpdateSlot }) => {
+const Calendar = ({ slots, onDeleteSlot, onUpdateSlot }) => {
   if (!slots || slots.length === 0) {
     return <p className="no-slots">No available slots.</p>;
   }
@@ -60,4 +60,4 @@ const CalendarComponent = ({ slots, onDeleteSlot, onUpdateSlot }) => {
   );
 };
 
-export default CalendarComponent;
+export default Calendar;
